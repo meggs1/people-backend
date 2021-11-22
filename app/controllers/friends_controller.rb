@@ -16,7 +16,7 @@ class FriendsController < ApplicationController
   # POST /friends
   def create
     @friend = Friend.new(friend_params)
-
+    puts friend_params
     if @friend.save
       render json: @friend, status: :created, location: @friend
     else
@@ -46,6 +46,6 @@ class FriendsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def friend_params
-      params.require(:friend).permit(:name, :bio, :avatar, :active)
+      params.require(:friend).permit(:name, :bio, :avatar, :active, :user_id)
     end
 end
